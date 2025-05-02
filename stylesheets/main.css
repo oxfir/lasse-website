@@ -57,7 +57,7 @@ header h1{
   }
 
 .nav {
- 
+ font-family: Impact Label Reversed;
 }
 .main-menu {
     list-style: none;
@@ -102,6 +102,7 @@ header h1{
   /* Styling for links */
   nav a {
     text-decoration: none;
+    font-family: Impact Label Reversed;
     font-size: 1rem;
     color: black;
     display: block;
