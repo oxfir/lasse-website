@@ -10,18 +10,24 @@
     <header>
         <h1>Lasse Langstrom</h1>
         <nav>
-          <ul>
+          <ul class="main-menu">
             <li><a href="#contact">Front Page</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li>
+                <a href="#projects">Projects</a>
+                <ul class="submenu">
+                  <li><a href="project1.html">Project 1</a></li>
+                  <li><a href="project2.html">Project 2</a></li>
+                </ul>
+              </li>
           </ul>
         </nav>
-      </header>
+    </header>
 
-      <main>  
+    <main>  
         <article class="project">
             <header>
-              <h2><a href="project1.html">Project Title #1</a></h2>
+              <h2>Project Title #1</h2>
             </header>
             
             <figure>
@@ -32,26 +38,27 @@
 
             <section>
               <p>This is a short description of the project. It highlights key features and what makes it interesting.</p>
+              <a href="project1.html" class="project-button">View Project</a>
             </section>
-          </article>
+        </article>
     </main>
 
-    <footer>
+<footer>
   <div class="footer-container">
-    <section class="footer-column">
-      <h2>Lasse Langstrom</h2>
+    <section>
+      <h4>Lasse Langstrom</h4>
     </section>
-    <section class="footer-column">
-      <h2>Contact</h2>
+    <section>
+      <h4>Contact</h4>
       <address>
         Email: <a href="">info@mywebsite.com</a><br />
       </address>
     </section>
-    <section class="footer-column">
-      <h2>Site Map</h2>
+    <section>
+      <h4>Site Map</h4>
       <ul>
         <li><a href="#frontpage">front page</a></li>
-        <li><a href="#abaout">Aboutt</a></li>
+        <li><a href="#abaout">About</a></li>
         <li><a href="#projects">Projects</a></li>
       </ul>
     </section>
