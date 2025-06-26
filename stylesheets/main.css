@@ -32,7 +32,7 @@ html {
     font-style: normal;
   }
   
-h1, h2, h3, h5, h6 {
+h1, h2, h3, h5, h6{
     font-family: 'Impact Label Reversed'; /* For all headings */
   }
   
@@ -40,20 +40,43 @@ p, h4 {
     font-family: 'AveriaSansLibre';
   }  
 
+   h1 {
+            /* Make the h1 behave like an inline element, but still allow some block properties */
+            display: inline; 
+            background-color: rgb(255, 255, 255); /* Example background */
+            box-decoration-break: clone; /* Crucial for applying styles to wrapped parts */
+
+            /* Optional: control text wrapping if you want more balanced lines */
+            /* text-wrap: balance; */ 
+     color: #000;
+    font-size: 4rem;
+    line-height: 3.5rem;
+    padding: 0.15rem 0.70rem 0.3rem 0.60rem;
+     background-color: rgb(255, 255, 255);
+  }
+ 
+
   html, body{
     margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
+    overflow-x: hidden !important; /* Force no horizontal scroll */
+  }
+
+.logo{
+    font-family: 'Impact Label Reversed';
+    font-size: 4.5rem;
+     line-height: 3.5rem;
   }
 
   body {
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
     display: grid;
     padding: 1.7rem 2rem 0.6rem 2rem;
     box-sizing: border-box;
-  grid-template-rows: 135px 1fr; /* header + scroll area */
+  grid-template-rows: 115px 1fr; /* header + scroll area */
   height: 100vh;
   }
 
@@ -64,10 +87,6 @@ header {
     column-gap: 2rem;
   }
 
-header h1{
-    font-size: 4.5rem;
-    line-height: 3.5rem;
-  }
 
 /*NAVBAR problem with the width fit*/
 
@@ -146,6 +165,76 @@ nav a {
 
   /*END NAVBAR*/
 
+ body {
+  margin: 0;
+  overflow-x: hidden; /* 🚫 Disables horizontal scroll */
+}
+
+
+
+
+
+/*PROJECTS PAGE*/
+.projects-intro{
+    width: 40%;
+    padding-top: 4.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+.project-gallery{
+ display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem 3rem;
+  row-gap: 3rem;
+}
+
+
+  .project-card {
+    aspect-ratio: 4 / 3; /* or whatever you like, e.g. 16 / 9 */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.project-card h2 {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-family: 'Impact Label Reversed';
+  font-size: 0.8rem;
+  color: white;
+  background-color: black;
+  
+  padding: 0.3rem 0.5rem;
+  
+  display: inline-block;   /* shrink to text size */
+  max-width: 100%;          /* limits width so it can wrap */
+  white-space: normal;     /* allow wrapping */
+  text-align: center;
+  
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-card:hover h2 {
+  opacity: 1;
+}
+
+
+
+ 
+/* END PROJECTS PAGE*/
 
   /*FOOTER*/
 
@@ -200,7 +289,10 @@ h4{
   overflow-y: auto;
   min-height: 0; /* prevents stretching beyond view */
   height: 100%;
-  
+   width: 100%;
+  max-width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .scroll-area::-webkit-scrollbar {
@@ -231,62 +323,54 @@ h4{
 
 
 main {
-    min-height: 0;
-    overflow: auto;
-  }
-
-  .project-card{
-    position: relative;
-  width: 70vw;
-  max-width: 1400px;
-  margin-left: auto;      /* Pushes it slightly right */
-  margin-right: 5%;       /* Optional fine-tune spacing */
-  overflow: hidden;
-  padding-bottom: 60%;   /* Aspect ratio trick: 5:3 ratio */
-  }
-
-  .project-card img{
-    width: auto;                 /* Set width to auto to allow the height to control the size */
-  height: 100%;                /* Image should cover 100% of the container height */
-  object-fit: cover;           /* Ensure the image maintains its aspect ratio and covers the area */
-  object-position: right;      /* Align the image to the right edge */
-  display: block;              /* Remove any unwanted space below the image */
-  }
-
-  .project-card-content{
-  position: absolute;
-  left: 0;                         /* Align to left edge of parent */
-  top: 60%;                        /* Vertically lower than center (adjust % as needed) */
-  transform: translateY(-50%);     /* Offset to achieve vertical centering */
-  display: flex;
-  flex-direction: column;          /* Stack children vertically */
-  align-items: flex-start;         /* Align children to the left */
-  width: clamp(260px, 35%, 800px)
-}
-
-.project-card-content h2{
-  padding-bottom: 1rem; 
-  font-size: 3rem;      
-}
-
-.project-card-content p{
-  padding-left: 0.5rem;
+    flex: 1 0 auto;  /* Let it grow and not shrink */
+  overflow: visible; /* Disable its own scrolling */
+  padding-right: 5rem;
   padding-bottom: 2rem;
+  }
+.project-grid {
+    display: grid;
+    /* This creates a single-column layout initially for content flow */
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px auto auto;
+    position: relative; /* Crucial for absolute positioning of children */
+    min-height: 500px; /* Ensure enough height for overlapping content */
+    /* Adjust as needed to contain both elements */
 }
-.project-button {
-  font-family: Impact Label Reversed;
-  font-size: 1.6rem;
-  color: #000;
-  display: inline-block;
-  background: white;
-  padding: 0.25rem 0.8rem;
-  border: none;
-  text-decoration: none;
-  transform: rotate(2.07deg); /* Slight rotation */
- 
-}      
 
-.project-button:hover {
-  transform: rotate(1.7deg);
-  
+/* VIDEO spans rows 1 to 4 — top right */
+.project-grid iframe {
+    position: absolute; /* Take out of normal flow */
+    top: 0;             /* Align to the top of the .project-grid */
+    right: 0;           /* Align to the right of the .project-grid */
+    width: 60%;         /* Adjust width as desired for the video */
+    height: 100%;       /* Make it fill the height of its container */
+    max-height: 600px;  /* Optional: Cap the max height of the video */
+    min-width: 600px;   /* Keep your min-width constraint */
+    min-height: 300px;  /* Keep your min-height constraint */
+    border: none;
+    z-index: 1;         /* Ensure video is behind the description initially if description has higher z-index */
+    /*
+        If you want the video to appear *on top* of the text,
+        increase its z-index (e.g., z-index: 2;) and ensure
+        the description has a lower z-index or none.
+    */
+     grid-row: 1 / 4
 }
+
+.project-description {
+    position: relative; /* Can also be absolute if you want fine-grained control */
+    /* If you set position: absolute, you'll need top, left, width, etc. */
+    /* For now, let's keep it relative to stay in normal flow but allow overlap */
+    z-index: 2; 
+    margin-right: 45%; /* Push description to the left, creating space for video */
+                       /* This percentage should be less than iframe's width to allow overlap */
+    /* Example: to make it overlap the video, adjust its width and position */
+    width: 50%; /* Make description wider to overlap the iframe */
+     grid-row: 3 / 5
+}
+
+
+
+
+/* END Single project page */
