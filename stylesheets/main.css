@@ -111,15 +111,20 @@ p, h4 {
 }
 
 .main-menu li:nth-child(1) {
-    margin-bottom: 0.1rem !important;
+    margin-bottom: 0 !important;
   }
   
   .main-menu li:nth-child(2) {
-    margin-bottom: 0.06rem !important;
+    margin-bottom: 0 !important;
   }
 
    .submenu a{
     padding: 0.17rem 0.17rem 0.2rem 0.5rem !important;
+  }
+
+  .submenu {
+    margin-left: 0.6rem !important;
+     line-height: 0.8rem !important;
   }
 
    .footer-container{
@@ -200,11 +205,13 @@ nav a {
   }
   
   .submenu {
+    margin-top: 0.15rem;
     margin-left: 1rem;
     transform: rotate(2.0deg);
     list-style: none;     
     padding: 0; 
     display: none; 
+     line-height: 1.1rem
   }
 
   .submenu a{
